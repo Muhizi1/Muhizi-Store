@@ -1,0 +1,222 @@
+<!-- ================= SHARED NAVBAR (COPY INTO EACH PAGE) ================= -->
+<nav class="bg-black text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-yellow-500">LuxeFashion</h1>
+    <div class="space-x-6 font-medium">
+    <a href="index.html" class="hover:text-yellow-500">Home</a>
+    <a href="products.html" class="hover:text-yellow-500">Shop</a>
+    <a href="cart.html" class="hover:text-yellow-500">Cart</a>
+    <a href="login.html" class="hover:text-yellow-500">Account</a>
+    </div>
+    </div>
+    </nav>
+    
+    
+    <!-- ================= INDEX.HTML ================= -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>LuxeFashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{gold:'#eab308'}}}}</script>
+    </head>
+    <body class="bg-white text-gray-800">
+    
+    <!-- NAV -->
+    <nav class="bg-black text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+    <h1 class="text-2xl font-bold text-yellow-500">LuxeFashion</h1>
+    <div class="space-x-6">
+    <a href="index.html">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="cart.html">Cart</a>
+    <a href="login.html">Account</a>
+    </div>
+    </div>
+    </nav>
+    
+    <!-- HERO -->
+    <section class="bg-gray-900 text-white text-center py-28">
+    <h2 class="text-5xl font-bold mb-6">Luxury Style Collection</h2>
+    <p class="text-lg text-gray-300">Shoes • Rings • Cups • Clothes</p>
+    <a href="products.html" class="bg-yellow-500 text-black px-8 py-3 mt-8 inline-block rounded-xl font-semibold">Explore Store</a>
+    </section>
+    
+    <!-- FEATURE SECTION -->
+    <section class="max-w-7xl mx-auto py-20 grid md:grid-cols-3 gap-10">
+    <div class="text-center">
+    <h3 class="text-xl font-bold mb-2 text-yellow-500">Premium Quality</h3>
+    <p>Our products are designed with the highest quality materials for comfort and durability.</p>
+    </div>
+    <div class="text-center">
+    <h3 class="text-xl font-bold mb-2 text-yellow-500">Modern Design</h3>
+    <p>Fashion trends blended with elegance and simplicity.</p>
+    </div>
+    <div class="text-center">
+    <h3 class="text-xl font-bold mb-2 text-yellow-500">Fast Delivery</h3>
+    <p>Reliable shipping and secure packaging for every order.</p>
+    </div>
+    </section>
+    
+    <!-- PROMO -->
+    <section class="bg-gray-100 py-20 text-center">
+    <h2 class="text-4xl font-bold mb-6">New Arrivals</h2>
+    <p class="mb-8">Discover our latest luxury fashion drops.</p>
+    <a href="products.html" class="bg-black text-white px-6 py-3 rounded-xl hover:bg-yellow-500 hover:text-black">Shop Now</a>
+    </section>
+    
+    <footer class="bg-black text-white text-center py-8 mt-20">© 2026 LuxeFashion</footer>
+    </body>
+    </html>
+    
+    
+    <!-- ================= PRODUCTS.HTML ================= -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-white text-gray-800">
+    
+    <!-- NAV -->
+    <nav class="bg-black text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+    <h1 class="text-2xl font-bold text-yellow-500">LuxeFashion</h1>
+    <div class="space-x-6">
+    <a href="index.html">Home</a>
+    <a href="products.html">Shop</a>
+    <a href="cart.html">Cart</a>
+    <a href="login.html">Account</a>
+    </div>
+    </div>
+    </nav>
+    
+    <section class="max-w-7xl mx-auto py-16">
+    <h2 class="text-4xl font-bold mb-10 text-center">Shop Collection</h2>
+    <div class="grid md:grid-cols-4 gap-8" id="list"></div>
+    </section>
+    
+    <script>
+    const products=[
+    {name:"Designer Shoes",price:120},
+    {name:"Gold Ring",price:250},
+    {name:"Luxury Cup",price:40},
+    {name:"Classic Jacket",price:180},
+    {name:"Sneakers",price:95},
+    {name:"Silver Ring",price:150},
+    {name:"Premium Hoodie",price:110},
+    {name:"Fashion Shirt",price:85}
+    ];
+    
+    const list=document.getElementById("list");
+    products.forEach(p=>{
+    list.innerHTML+=`
+    <div class='border rounded-2xl p-4 text-center shadow hover:shadow-xl'>
+    <img src='https://via.placeholder.com/200' class='mx-auto mb-4'>
+    <h3 class='font-bold text-lg'>${p.name}</h3>
+    <p class='text-yellow-500 font-bold mb-2'>$${p.price}</p>
+    <button onclick="add('${p.name}',${p.price})" class='bg-black text-white px-4 py-2 rounded hover:bg-yellow-500 hover:text-black'>Add to Cart</button>
+    </div>`});
+    
+    function add(name,price){
+    let cart=JSON.parse(localStorage.getItem("cart")||"[]");
+    cart.push({name,price});
+    localStorage.setItem("cart",JSON.stringify(cart));
+    alert("Added to cart");
+    }
+    </script>
+    
+    </body>
+    </html>
+    
+    
+    <!-- ================= CART.HTML ================= -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+    
+    <nav class="bg-black text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+    <h1 class="text-2xl font-bold text-yellow-500">Cart</h1>
+    <a href="products.html">← Continue Shopping</a>
+    </div>
+    </nav>
+    
+    <div class="max-w-3xl mx-auto py-16 bg-white shadow rounded-xl p-8">
+    <h2 class="text-2xl font-bold mb-6">Your Items</h2>
+    <div id="items"></div>
+    
+    <p class="text-xl font-bold mt-6">Total: $<span id="total">0</span></p>
+    <a href="checkout.html" class="bg-yellow-500 text-black px-6 py-3 rounded-xl inline-block mt-6">Proceed to Checkout</a>
+    </div>
+    
+    <script>
+    let cart=JSON.parse(localStorage.getItem("cart")||"[]");
+    let total=0;
+    let items=document.getElementById("items");
+    
+    cart.forEach(i=>{
+    total+=i.price;
+    items.innerHTML+=`<div class='flex justify-between border-b py-2'><span>${i.name}</span><span>$${i.price}</span></div>`});
+    
+    document.getElementById("total").innerText=total;
+    </script>
+    
+    </body>
+    </html>
+    
+    
+    <!-- ================= CHECKOUT.HTML ================= -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 flex items-center justify-center h-screen">
+    
+    <div class="bg-white shadow-xl rounded-2xl p-10 w-96">
+    <h2 class="text-3xl font-bold mb-6 text-center">Checkout</h2>
+    <input class="border w-full p-3 mb-4" placeholder="Full Name">
+    <input class="border w-full p-3 mb-4" placeholder="Address">
+    <input class="border w-full p-3 mb-4" placeholder="Card Number">
+    <button onclick="done()" class="w-full bg-yellow-500 py-3 rounded-xl font-bold">Confirm Payment</button>
+    </div>
+    
+    <script>
+    function done(){
+    localStorage.removeItem("cart");
+    alert("Payment successful");
+    window.location="index.html";
+    }
+    </script>
+    
+    </body>
+    </html>
+    
+    
+    <!-- ================= LOGIN.HTML ================= -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-900 flex items-center justify-center h-screen">
+    
+    <div class="bg-white p-10 rounded-2xl shadow-xl w-80">
+    <h2 class="text-3xl font-bold mb-6 text-center">Account Login</h2>
+    <input class="border w-full p-3 mb-4" placeholder="Email">
+    <input type="password" class="border w-full p-3 mb-4" placeholder="Password">
+    <button class="w-full bg-yellow-500 py-3 rounded-xl font-bold">Login</button>
+    <p class="text-center mt-4 text-sm text-gray-500">Secure access to your orders</p>
+    </div>
+    
+    </body>
+    </html>
+    
